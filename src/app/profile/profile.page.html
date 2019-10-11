@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>User Facebook Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="user">
+        <ion-row>
+            <ion-col class="title">
+                <ion-avatar>
+                    <ion-img [src]="user.photoURL"></ion-img>
+                </ion-avatar>
+                {{user.displayName}}
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="user.email">
+            <ion-col col-3 padding-left class="label">
+                Email
+            </ion-col>
+            <ion-col col-9>
+                {{user.email}}
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="user.phoneNumber">
+            <ion-col col-3 padding-left class="label">
+                phoneNumber
+            </ion-col>
+            <ion-col col-9>
+                {{user.phoneNumber}}
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-3 padding-left class="label">
+                last Sign In Time
+            </ion-col>
+            <ion-col col-9>
+                {{user.lastSignInTime}}
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+            <ion-col col-3 padding-left class="label">
+                Is Email Verified?
+            </ion-col>
+            <ion-col col-9>
+                {{user.emailVerified}}
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-button expand="full" (click)="logout()">
+        Logout
+        <ion-icon slot="start" name="log-out"></ion-icon>
+    </ion-button>
+    <!-- <ion-toolbar color="danger">
+        <ion-title>
+            Logout
+        </ion-title>
+    </ion-toolbar> -->
+</ion-footer>
