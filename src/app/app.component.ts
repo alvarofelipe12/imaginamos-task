@@ -38,10 +38,8 @@ export class AppComponent {
 
     initializeApp() {
         this.platform.ready().then(() => {
-            // this.statusBar.styleDefault();
             this.splashScreen.hide();
             this.statusBar.hide();
-            // El statusbar es la barra de notificaciones
             // Color para el statusbar
             this.statusBar.backgroundColorByHexString('#000000');
             // Evitamos el solapamiento del header con la statusbar

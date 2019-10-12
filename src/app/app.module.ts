@@ -12,6 +12,8 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
+import { ReadJsonService } from './services/read-json.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,12 +23,14 @@ import { environment } from '../environments/environment';
         IonicModule.forRoot(),
         AppRoutingModule,
         AngularFireModule.initializeApp(environment.config),
-        AngularFireAuthModule
+        AngularFireAuthModule,
+        HttpClientModule
     ],
     providers: [
         StatusBar,
         SplashScreen,
         Facebook,
+        ReadJsonService,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
     ],
     bootstrap: [AppComponent]
