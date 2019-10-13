@@ -22,6 +22,11 @@ export class AppComponent {
             icon: 'logo-facebook'
         },
         {
+            title: 'My order',
+            url: '/my-order',
+            icon: 'cart'
+        },
+        {
             title: 'Profile',
             url: '/profile',
             icon: 'person'
@@ -41,9 +46,9 @@ export class AppComponent {
             this.splashScreen.hide();
             this.statusBar.hide();
             // Color para el statusbar
-            this.statusBar.backgroundColorByHexString('#000000');
+            this.statusBar.backgroundColorByHexString('#e7a61a');
             // Evitamos el solapamiento del header con la statusbar
-            this.statusBar.show()
+            this.statusBar.show();
         });
     }
 }

@@ -13,8 +13,18 @@ import * as firebase from 'firebase';
 })
 export class LoginPage implements OnInit {
 
+    /**
+     * Handle the loading
+     */
     private loading: any;
 
+    /**
+     * Class constructor's
+     * @param router Angular router to navigate the app
+     * @param fb Facebook library
+     * @param loadingController Controller to show a loading
+     * @param fireAuth Firebase library
+     */
     constructor(
         private router: Router,
         private fb: Facebook,
@@ -24,10 +34,14 @@ export class LoginPage implements OnInit {
 
     async ngOnInit() {
         this.loading = await this.loadingController.create({
-            message: 'Connecting ...'
+            message: 'Processing data...'
         });
     }
 
+    /**
+     * Present a loading while the user is login in
+     * @param loading loading object
+     */
     async presentLoading(loading: any) {
         await loading.present();
     }
@@ -36,26 +50,21 @@ export class LoginPage implements OnInit {
 
         this.fb.login(['email'])
             .then((response: FacebookLoginResponse) => {
+                this.presentLoading(this.loading);
                 this.onLoginSuccess(response);
-                console.log(response.authResponse.accessToken);
             }).catch((error) => {
-                console.log(error)
-                alert('error:' + error)
+                console.error(error);
+                alert('error:' + error);
             });
     }
 
     private onLoginSuccess(res: FacebookLoginResponse) {
-        // const { token, secret } = res;
         const credential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
         this.fireAuth.auth.signInWithCredential(credential)
             .then((response) => {
-                this.router.navigate(["/profile"]);
+                this.router.navigate(['/profile']);
                 this.loading.dismiss();
-            })
+            });
 
-    }
-
-    private onLoginError(err) {
-        console.log(err);
     }
 }

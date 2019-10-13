@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="clean()">
+                <ion-icon name="trash"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            My
+            <br>
+            <span>
+                Order
+            </span>
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let product of order" class="product-container">
+        <ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <img class="image" [src]="product.image" alt="prod">
+                    </ion-col>
+                    <ion-col>
+                        <ion-label>1 x <span>{{product.name}}</span></ion-label>
+                    </ion-col>
+                    <ion-col class="value">
+                        ${{product.price}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-card>
+    <ion-item class="total-text">
+        Total:
+        <ion-text>${{total}}</ion-text>
+    </ion-item>
+
+    <span class="persons">Persons</span>
+    <div class="quantity-people">
+        <ion-button (click)="modifyQuantiyPeople('substract')">
+            -
+        </ion-button>
+        <ion-input type="number" value="1" [(ngModel)]="quantityPeople"></ion-input>
+        <ion-button (click)="modifyQuantiyPeople('add')">
+            +
+        </ion-button>
+    </div>
+    <ion-button expand="block" class="next-button" (click)="next()">
+        <ion-label class="time-preparation" *ngIf="order.length > 0">
+            15-25 min
+        </ion-label>
+        <ion-label class="time-preparation" *ngIf="order.length === 0">
+            -- min
+        </ion-label>
+        <ion-label class="next-text">Next</ion-label>
+    </ion-button>
+</ion-content>

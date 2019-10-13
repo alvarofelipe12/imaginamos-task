@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-searchbar placeholder="Search..."></ion-searchbar>
+    <ion-searchbar placeholder="Search..." [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
     <ion-grid>
         <ion-row class="category-list">
             <div class="category" *ngFor="let category of categories; let i=index" (click)="selectCategory(category)"
@@ -47,7 +47,7 @@
                 <ion-icon name="star-outline" slot="start"></ion-icon>
                 <ion-label>{{product.qualification}}</ion-label>
                 <ion-label>{{product.time}}</ion-label>
-                <ion-button fill="outline" slot="end">
+                <ion-button fill="outline" slot="end" (click)="addToOrder(product)">
                     <ion-icon slot="start" name="cart"></ion-icon>
                     {{product.price}}
                 </ion-button>

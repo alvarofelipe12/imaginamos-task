@@ -12,6 +12,10 @@ ion-buttons {
     top: -70px;
 }
 
+ion-header::after {
+    background-image: none;
+}
+
 .category-selected {
     background-color: #e7a61a;
 }
@@ -28,6 +32,7 @@ ion-buttons {
         background-color: white;
         width: 35px;
         height: 35px;
+        margin: 0 10px 0 9px;
     }
 
     ion-label {
@@ -45,10 +50,6 @@ ion-buttons {
     color: lightgray;
 }
 
-ion-header::after {
-    background-image: none;
-}
-
 .card-detail {
     box-shadow: none;
 
@@ -59,5 +60,8 @@ ion-header::after {
     ion-button {
         --color: #e7a61a;
         --border-color: #e7a61a;
+        --color-activated: #e7a61a;
+        --color-focused: #e7a61a;
+        --color-hover: #e7a61a;
     }
 }

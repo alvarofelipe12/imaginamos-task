@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { ReadJsonService } from './services/read-json.service';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderService } from './services/order.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
         SplashScreen,
         Facebook,
         ReadJsonService,
+        OrderService,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
     ],
     bootstrap: [AppComponent]

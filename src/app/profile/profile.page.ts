@@ -8,13 +8,25 @@ import { AngularFireAuth } from '@angular/fire/auth';
     styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-    user: any = {}
+
+    /**
+     * Store the user's data
+     */
+    public user: any = {};
+
     constructor(
         private router: Router,
         private fireAuth: AngularFireAuth
     ) { }
 
     ngOnInit() {
+        this.setUserData();
+    }
+
+    /**
+     * Check if the user exist in the db and then assigns the data
+     */
+    private setUserData(): void {
         this.fireAuth.auth.onAuthStateChanged(user => {
             if (user) {
                 this.user = {
@@ -27,17 +39,19 @@ export class ProfilePage implements OnInit {
                     displayName: user.displayName,
                     emailVerified: user.emailVerified,
                     refreshToken: user.refreshToken
-                }
+                };
+            } else {
+                this.router.navigate(['/home']);
             }
-            else {
-                this.router.navigate(["/home"]);
-            }
-        })
+        });
     }
 
+    /**
+     * Handle logout process
+     */
     public logout() {
         this.fireAuth.auth.signOut().then(() => {
-            this.router.navigate(["/home"]);
-        })
+            this.router.navigate(['/home']);
+        });
     }
 }

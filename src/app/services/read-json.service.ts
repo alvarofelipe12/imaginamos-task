@@ -12,10 +12,10 @@ export class ReadJsonService {
     ) {}
 
     public getCategories(): Observable<any> {
-        return this.http.get("./assets/categories.json");
+        return this.http.get('./assets/categories.json');
     }
 
     public getProducts(): Observable<any> {
-        return this.http.get("./assets/products.json");
+        return this.http.get('./assets/products.json');
     }
 }
